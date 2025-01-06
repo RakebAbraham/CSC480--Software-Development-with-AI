@@ -1,0 +1,17 @@
+Make a search engine for a subdirectory of your filesystem, that operates purely in memory.  The way it should work is the following: if you start it from the commandline ($ ./search --dir foo_bar_dir ) it will crawl through the text files in that directory and recursively directories inside of it, and generate an in-memory representation of that data such that it can find which subdirectory / file / line contains the search query you issue.  The program once started, will wait for queries from the user (once it's done building its in-memory index).  Queries will look like the following: 
+
+> biz +foo +bar +(bat baz) bop
+
+to be interpreted to mean: find lines containing "foo" *and* "bar" and (either "bat" or "baz") and optionally biz or bop.  Optional matches will change the sort order of the results: results should be sorted in descending order of number of hits (so lines that contain all of the tokens come first, then all but one, etc.  But all results have to contain all of the "required" clauses: either bat or baz, etc).
+
+Results should look like:
+
+> biz +foo +bar +(bat baz) bop
+
+/Users/jake/tmp/README.md  12 "Foo is the bar best way to bat my biz bop!"
+/Users/jake/tmp/test.txt 1 "foo bar does not baz bop at all"
+
+Rules: don't use any search libraries for this, build it using the core libraries of either java, c/c++, python, or javascript.
+
+Note: the basic strategy is to split up each line of each file into separate words ("tokens"), and for this assignment, it's fine to do this pretty naively: lowercase everything, replace all non-alphanumeric characters as whitespace, then split on whitespace, so "Foo is the bar best way to bat my biz bop!" becomes ['foo', 'is', 'the', 'bar', 'best', 'way', 'to', 'bat', 'my', 'biz', 'bop'].  Build a data structure which is keyed on the words: 'foo' => { 'dir': '/Users/jake/tmp', 'file': 'README.md', 'line': 12 }, etc.  Hopefully you can take it from there!
+
