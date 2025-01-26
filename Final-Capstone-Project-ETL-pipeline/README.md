@@ -1,29 +1,25 @@
-# Assignment 2: Employee Data Generator
-
-This project generates synthetic employee data and optionally uploads it to Google Cloud Storage.
 
 ## Features
-- Generates realistic employee data using Faker library
-- Creates CSV files with employee information
-- Optional upload to Google Cloud Storage
-- Configurable number of employees and departments
+- Generates fake employee data including:
+  - Personal information
+  - Job details
+  - Salary information
+  - Contact details
+- Automatically saves to CSV file
+- Uploads to GCP bucket
 
-## Setup and Running
-
-1. Install required packages:
-   ```bash
+## How to Run
+1. Install requirements:
+   \`\`\`bash
    pip install -r requirements.txt
-   ```
+   \`\`\`
 
 2. Run the script:
-   ```bash
+   \`\`\`bash
    python Extract.py
-   ```
+   \`\`\`" > README.md
 
-## Output
-The script will generate:
-- A local CSV file with employee data
-- Optional upload to GCS bucket (if configured)
-
-## Note
-This is an assignment for CSC480 Software Development with AI course.
+# Add and commit the README
+git add README.md
+git commit -m "Add simple README"
+git push origin main
