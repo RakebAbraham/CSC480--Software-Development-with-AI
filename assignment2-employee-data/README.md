@@ -1,6 +1,3 @@
-echo "# Employee Data Generator
-
-This is the code that creates the fake data and loads to bucket in GCP.
 
 ## Features
 - Generates fake employee data including:
